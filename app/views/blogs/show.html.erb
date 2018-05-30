@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @blog.status %>
+</p>
+
+<p>
+  <strong>Profile:</strong>
+  <%= @blog.profile %>
+</p>
+
+<%= link_to 'Add Picture', new_blog_attachment_path(@blog) %>
+
+<% @blog.attachments.each do |attachment| %>
+    <%= image_tag(attachment.image_url) %>
+<% end %>
+<%= link_to 'Edit', edit_blog_path(@blog) %> |
+<%= link_to 'Back', blogs_path %>
