@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dp8gzmov7
+  api_key: '683921633688882'
+  api_secret: uOm7Dd_4V--vr6sUusISwcwflAA
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: dp8gzmov7
+  api_key: '683921633688882'
+  api_secret: uOm7Dd_4V--vr6sUusISwcwflAA
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: dp8gzmov7
+  api_key: '683921633688882'
+  api_secret: uOm7Dd_4V--vr6sUusISwcwflAA
+  enhance_image_tag: true
+  static_image_support: false

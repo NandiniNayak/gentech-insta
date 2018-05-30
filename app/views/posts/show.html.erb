@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @post.status %>
+</p>
+
+<p>
+  <strong>Profile:</strong>
+  <%= @post.profile.name %>
+</p>
+
+<p>
+  <%= image_tag(@post.picture_url, width: "30%", height: "30%") %>
+</p>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>

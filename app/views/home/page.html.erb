@@ -1,0 +1,11 @@
+<div class="jumbotron">
+  <h1>Hello, world!</h1>
+  <p>...</p>
+  <%= link_to 'Create Profile', new_profile_path, class: "btn btn-danger btn-lg"%>
+  <br>
+  <br>
+    <%= link_to 'Create Post', new_post_path, class: "btn btn-danger btn-lg"%>
+    <br>
+  <%= link_to 'sign out', destroy_user_session_path, method: :delete %>
+
+</div>
