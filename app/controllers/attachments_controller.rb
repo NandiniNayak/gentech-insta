@@ -69,7 +69,7 @@ class AttachmentsController < ApplicationController
     def set_attachment
       @attachment = Attachment.find(params[:id])
     end
-
+    # find the blog id to assign the blog id to picture table blog_id
     def set_blog
         @blog = Blog.find(params[:blog_id])
     end
