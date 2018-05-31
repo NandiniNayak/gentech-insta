@@ -1,5 +1,7 @@
 class AttachmentsController < ApplicationController
   before_action :set_attachment, only: [:show, :edit, :update, :destroy]
+  # find the blog id to assign the blog id to picture table blog_id
+  before_action :set_blog
 
   # GET /attachments
   # GET /attachments.json
@@ -66,6 +68,10 @@ class AttachmentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_attachment
       @attachment = Attachment.find(params[:id])
+    end
+
+    def set_blog
+        @blog = Blog.find(params[:blog_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

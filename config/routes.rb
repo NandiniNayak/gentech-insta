@@ -2,16 +2,15 @@ Rails.application.routes.draw do
 
   # resources :attachments
   resources :blogs do
-      resources :attachments
+    resources :attachments
   end
+  
   resources :posts
   resources :profiles
   # for omniauth : you get the error: The action 'facebook' could not be found for Devise::OmniauthCallbacksController when you sign up with facebook, to solev this create a call back function for users
 
 
 devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  resources :publishers
-  resources :games
   root 'home#page'
   # root 'devise/sessions#new'
 

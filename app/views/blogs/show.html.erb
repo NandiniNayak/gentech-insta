@@ -7,13 +7,15 @@
 
 <p>
   <strong>Profile:</strong>
-  <%= @blog.profile %>
+  <%= @blog.profile.name %>
 </p>
 
-<%= link_to 'Add Picture', new_blog_attachment_path(@blog) %>
-
+<br>
+<%= link_to 'Add Picture', new_blog_attachment_path(@blog), class: "btn btn-primary" %>
+<br><br>
 <% @blog.attachments.each do |attachment| %>
-    <%= image_tag(attachment.image_url) %>
+    <%= image_tag(attachment.image_url, width: "30%", height: "30%") %>
 <% end %>
+<br>
 <%= link_to 'Edit', edit_blog_path(@blog) %> |
 <%= link_to 'Back', blogs_path %>

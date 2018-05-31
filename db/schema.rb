@@ -28,12 +28,6 @@ ActiveRecord::Schema.define(version: 2018_05_30_060932) do
     t.index ["profile_id"], name: "index_blogs_on_profile_id"
   end
 
-  create_table "games", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "posts", force: :cascade do |t|
     t.string "status"
     t.integer "profile_id"
@@ -53,14 +47,6 @@ ActiveRecord::Schema.define(version: 2018_05_30_060932) do
     t.datetime "updated_at", null: false
     t.string "picture"
     t.index ["user_id"], name: "index_profiles_on_user_id"
-  end
-
-  create_table "publishers", force: :cascade do |t|
-    t.string "name"
-    t.integer "game_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["game_id"], name: "index_publishers_on_game_id"
   end
 
   create_table "users", force: :cascade do |t|
