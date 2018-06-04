@@ -1,6 +1,6 @@
 class AttachmentsController < ApplicationController
   before_action :set_attachment, only: [:show, :edit, :update, :destroy]
-  # find the blog id to assign the blog id to picture table blog_id
+  # let the attachment controller know about the blog_id being passed in the url
   before_action :set_blog
 
   # GET /attachments
@@ -27,6 +27,7 @@ class AttachmentsController < ApplicationController
   # POST /attachments.json
   def create
     @attachment = Attachment.new(attachment_params)
+    # link blog id to the attachment blog_id
     @attachment.blog_id = @blog.id
 
     respond_to do |format|
@@ -69,13 +70,15 @@ class AttachmentsController < ApplicationController
     def set_attachment
       @attachment = Attachment.find(params[:id])
     end
-    # find the blog id to assign the blog id to picture table blog_id
-    def set_blog
-        @blog = Blog.find(params[:blog_id])
-    end
 
+    def set_blog
+      @blog = Blog.find(params[:blog_id])
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def attachment_params
+      logger.debug("1111111111111111111111")
+      logger.debug(params.inspect)
+      logger.debug("1111111111111111111111")
       params.require(:attachment).permit(:image, :blog_id)
     end
 end

@@ -25,8 +25,8 @@ class BlogsController < ApplicationController
   # POST /blogs.json
   def create
     @blog = Blog.new(blog_params)
+    # link the profile id to the blog's profile_id from the back end
     @blog.profile_id = current_user.profile.id
-
     respond_to do |format|
       if @blog.save
         format.html { redirect_to @blog, notice: 'Blog was successfully created.' }

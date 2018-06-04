@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
-  # resources :attachments
+
+  # create a nested routes for attachements in the blogs
   resources :blogs do
     resources :attachments
   end
-  
+  # resources :attachments
   resources :posts
   resources :profiles
   # for omniauth : you get the error: The action 'facebook' could not be found for Devise::OmniauthCallbacksController when you sign up with facebook, to solev this create a call back function for users
