@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_30_060932) do
+ActiveRecord::Schema.define(version: 2018_06_04_010420) do
 
   create_table "attachments", force: :cascade do |t|
     t.string "image"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2018_05_30_060932) do
   end
 
   create_table "blogs", force: :cascade do |t|
-    t.text "status"
+    t.string "status"
     t.integer "profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
