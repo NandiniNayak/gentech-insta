@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
 
 
+  root 'welcome#page'
   # create a nested routes for attachements in the blogs
   resources :blogs do
     resources :attachments
     member do
-      put "like", to:"blogs#vote"
+      put 'like', to:"blogs#vote"
     end
   end
   # resources :attachments
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
 
 
 devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  root 'home#page'
+  get 'home/page'
 
   # root 'devise/sessions#new'
 

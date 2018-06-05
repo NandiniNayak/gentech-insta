@@ -1,19 +1,24 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy, :vote]
 
-  def vote
-    case current_user.voted_as_when_voted_for(@blog)
-    when nil
-        @blog.upvote_by current_user
-    when true
-        @blog.unvote_by current_user
-    when false
-        @blog.upvote_by current_user
-    else
-      redirect_to root_path
-    end
-  end
+  # before_action :set_like, only: [:vote]
 
+def vote
+  case current_user.voted_as_when_voted_for(@blog)
+    # if note voted yet
+  when nil
+    @blog.upvote_by current_user
+  when true
+    # if already voted
+    @blog.unvote_by current_user
+  when false
+    # if voted and then unvoted
+    @blog.upvote_by current_user
+  else
+
+  end
+    redirect_to root_path
+end
   # GET /blogs
   # GET /blogs.json
   def index
@@ -81,6 +86,9 @@ class BlogsController < ApplicationController
       @blog = Blog.find(params[:id])
     end
 
+    # def set_like
+    #   @blog = Blog.find(params[:blog_id])
+    # end
     # Never trust parameters from the scary internet, only allow the white list through.
     def blog_params
       params.require(:blog).permit(:status, :profile_id)
