@@ -1,11 +1,25 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.fa-camera-retro{
+  font-size: 1.7em;
+}
 
-.jumbotron {
-    padding-top: 30px;
-    padding-bottom: 30px;
-    margin-bottom: 30px;
-    color: white;
-    background-color: black;
+.navbar-default {
+    background-color: white;
+    border-color: #e7e7e7;
+}
+
+.container-fluid {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 120px;
+    padding-right: 120px;
+}
+
+.navbar-form .form-group {
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle;
+    padding-left: 120px;
 }

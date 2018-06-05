@@ -1,11 +1,21 @@
-<div class="jumbotron">
-  <h1>Hello, world!</h1>
-  <p>...</p>
-  <%= link_to 'Create Profile', new_profile_path, class: "btn btn-danger btn-lg"%>
-  <br>
-  <br>
-    <%= link_to 'Create Post', new_post_path, class: "btn btn-danger btn-lg"%>
-    <br>
-  <%= link_to 'sign out', destroy_user_session_path, method: :delete %>
+<!-- navbar
+  logo,search, profile button, notification, dicover people,
+posts: @BLOGS
+profile picture :@blog.profile.image
+profile name
+location
+post , attachments : first
+like,comment,
+status
+when it was updated -->
 
-</div>
+<% @blogs.each do |blog| %>
+  <p><%= image_tag blog.profile.picture_url %></p>
+  <p><%= blog.profile.name %></p>
+  <p><%= blog.profile.location %></p>
+  <p><%= image_tag blog.attachments.first.image_url %></p>
+  <p>like</p>
+  <p>chat</p>
+  <p><%= blog.status %></p>
+  <p><%= blog.created_at.strftime("%d %h")%></p>
+<% end %>
