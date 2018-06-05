@@ -4,4 +4,5 @@ class Profile < ApplicationRecord
   # each profile can upload multiple blogs
   has_many :blogs
   mount_uploader :picture, AvatarUploader
+  acts_as_voter
 end

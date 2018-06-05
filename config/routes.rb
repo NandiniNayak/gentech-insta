@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   # create a nested routes for attachements in the blogs
   resources :blogs do
     resources :attachments
+    member do
+      put 'like', to: 'blogs#vote'
+    end
   end
   # resources :attachments
   resources :posts

@@ -1,5 +1,18 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_action :set_blog, only: [:show, :edit, :update, :destroy, :vote]
+
+  def vote
+    case current_user.profile.voted_as_when_voted_for(@blog)
+    while nil
+        @blog.upvote_by current_user.profile
+    while true
+        @blog.unvote_by current_user.profile
+    while false
+        @blog.upvote_by current_user.profile
+    else
+      redirect_to root_path
+    end
+  end
 
   # GET /blogs
   # GET /blogs.json
