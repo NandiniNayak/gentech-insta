@@ -1,0 +1,17 @@
+<% @blogs.each do |blog| %>
+  <p><%= image_tag blog.profile.picture_url %></p>
+  <p><%= blog.profile.name %></p>
+  <p><%= blog.profile.location %></p>
+  <p><%= image_tag blog.attachments.first.image_url %></p>
+  <% if current_user %>
+    <%= link_to like_blog_path(blog), method: :put do %>
+      <%= current_user.voted_as_when_voted_for(blog) == true ? "unlike" : "like"%>
+    <% end %>
+  <% else %>
+    <%= "like" %>
+  <% end %>
+  <p><%= blog.votes_for.size %> likes</p>
+  <p>chat</p>
+  <p><%= blog.status %></p>
+  <p><%= blog.created_at.strftime("%d %h")%></p>
+<% end %>
