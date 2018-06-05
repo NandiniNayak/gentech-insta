@@ -15,13 +15,14 @@ when it was updated -->
   <p><%= blog.profile.location %></p>
   <p><%= image_tag blog.attachments.first.image_url %></p>
   <!-- <p>like</p> -->
-  <% if current_user.profile %>
-    <%= link_to like_blog_path(blog), method: :put %>
-       <%= current_user.profile.voted_as_when_voted_for == true ? "like" : "unlike" %>
+  <% if current_user%>
+    <%= link_to like_blog_path(blog), method: :put, remote: true do %>
+       <%= current_user.voted_as_when_voted_for(blog) == true ? "unlike" : "like" %>
     <% end %>
   <% else %>
-      "unlike"
+    <%= "like" %>
   <% end %>
+  <p><%= blog.votes_for.size %> likes</p>
   <p>chat</p>
   <p><%= blog.status %></p>
   <p><%= blog.created_at.strftime("%d %h")%></p>

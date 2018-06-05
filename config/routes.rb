@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :blogs do
     resources :attachments
     member do
-      put 'like', to: 'blogs#vote'
+      put "like", to:"blogs#vote"
     end
   end
   # resources :attachments

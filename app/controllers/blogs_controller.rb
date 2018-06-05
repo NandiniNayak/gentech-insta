@@ -2,13 +2,13 @@ class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy, :vote]
 
   def vote
-    case current_user.profile.voted_as_when_voted_for(@blog)
-    while nil
-        @blog.upvote_by current_user.profile
-    while true
-        @blog.unvote_by current_user.profile
-    while false
-        @blog.upvote_by current_user.profile
+    case current_user.voted_as_when_voted_for(@blog)
+    when nil
+        @blog.upvote_by current_user
+    when true
+        @blog.unvote_by current_user
+    when false
+        @blog.upvote_by current_user
     else
       redirect_to root_path
     end

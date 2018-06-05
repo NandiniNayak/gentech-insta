@@ -17,7 +17,7 @@ gem 'simple_form'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'carrierwave'
-gem 'acts_as_votable', '~> 0.11.1'
+gem 'acts_as_votable'
 # gem 'cloudinary'
 # gem 'omniauth-google-oauth2'
 # Use Uglifier as compressor for JavaScript assets
