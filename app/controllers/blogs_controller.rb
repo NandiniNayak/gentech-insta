@@ -17,7 +17,7 @@ def vote
   else
 
   end
-    redirect_to root_path
+    redirect_to root_path(anchor: @blog.id)
 end
   # GET /blogs
   # GET /blogs.json

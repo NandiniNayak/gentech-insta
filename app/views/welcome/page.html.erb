@@ -1,17 +1,48 @@
-<% @blogs.each do |blog| %>
-  <p><%= image_tag blog.profile.picture_url %></p>
-  <p><%= blog.profile.name %></p>
-  <p><%= blog.profile.location %></p>
-  <p><%= image_tag blog.attachments.first.image_url %></p>
-  <% if current_user %>
-    <%= link_to like_blog_path(blog), method: :put do %>
-      <%= current_user.voted_as_when_voted_for(blog) == true ? "unlike" : "like"%>
-    <% end %>
-  <% else %>
-    <%= "like" %>
-  <% end %>
-  <p><%= blog.votes_for.size %> likes</p>
-  <p>chat</p>
-  <p><%= blog.status %></p>
-  <p><%= blog.created_at.strftime("%d %h")%></p>
-<% end %>
+<div class="posts-home">
+  <% @blogs.each do |blog| %>
+    <div id="<%= blog.id%>">
+      <!-- after hitting a like return to this point -->
+      <div class="card">
+        <div class="profile-post">
+              <%= image_tag(blog.profile.picture_url, class: "profile-post-pic") %>
+          <div class="profile-post-content">
+              <%= blog.profile.name %>
+              <br>
+              <%= blog.profile.location %>
+          </div>
+        </div>
+      <div class="card-body">
+        <%= image_tag(blog.attachments.first.image_url, class:"post-pic") %>
+        <h6 class="card-title">
+          <% if current_user %>
+            <%= link_to like_blog_path(blog), method: :put ,remote: true do %>
+              <%= current_user.voted_as_when_voted_for(blog) == true ? "unlike" : "like" %>
+            <% end %>
+          <% else %>
+              <i class="fas fa-heart"></i>
+          <% end %>
+          <br>
+        <%= blog.votes_for.size %> likes
+      </h6>
+        <p class="card-text">
+          <%= blog.status %>
+          <br>
+          <span class="date"><%= blog.created_at.strftime("%d %h")%></span>
+        </p>
+        <div class="comment-home">
+          <%= form_for([blog,Comment.new]) do |f| %>
+            <%= f.text_area :body, placeholder: "Add a comment"%>
+            <!-- <br> -->
+            <!-- <%= f.submit "Add comment" %> -->
+          <% end %>
+        </div>
+            <!-- comments must be moved to post page -->
+            <!-- <h2>Comments</h2>
+            <%= render partial: blog.comments %> -->
+      </div>
+    </div>
+
+
+    </div>
+ <% end %>
+</div>
