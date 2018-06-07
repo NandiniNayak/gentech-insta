@@ -82,11 +82,11 @@ body{
 .date{
   color:  #adb3bc;
 }
-.comment-home{
-  width: 100%;
-  margin-left: 1.2rem;
-}
-.textarea {
+// .comment-home{
+//   width: 100%;
+//   margin-left: 1.2rem;
+// }
+textarea {
     -webkit-appearance: textarea;
     background-color: white;
     -webkit-rtl-ordering: logical;
@@ -103,7 +103,7 @@ body{
     border-style: none;
     border-color: initial;
     border-image:  none;
-    padding: 2px;
+    padding-left: 1.3rem;
     min-width: 100%;
     box-sizing: inherit;
 }
