@@ -1,6 +1,7 @@
 // @import "bootstrap-sprockets";
 @import "bootstrap";
 @import url('https://fonts.googleapis.com/css?family=Lobster');
+@import "font-awesome";
 
 body{
   background-color: #fafafa;
@@ -86,24 +87,25 @@ body{
 //   width: 100%;
 //   margin-left: 1.2rem;
 // }
-textarea {
+#comment_body {
     -webkit-appearance: textarea;
     background-color: white;
     -webkit-rtl-ordering: logical;
     flex-direction: row;
     resize: auto;
     cursor: text;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    border-width: 0px;
-    border-top-width: 0px;
-    border-right-width: 0px;
-    border-bottom-width: 0px;
-    border-left-width: 0px;
     border-style: none;
-    border-color: initial;
-    border-image:  none;
     padding-left: 1.3rem;
+    padding-bottom: 2rem;
     min-width: 100%;
-    box-sizing: inherit;
+    border-color: none;
 }
+#comment_body:root{
+  border: none;
+  border-style: none;
+  border-color: white;
+}
+.fa, .far, .fas {
+    font-family: Font Awesome\ 5 Free;
+    font-size: 1.1em;
+} 

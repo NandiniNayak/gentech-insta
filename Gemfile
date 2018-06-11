@@ -19,6 +19,7 @@ gem 'omniauth-facebook'
 gem 'carrierwave'
 gem 'acts_as_votable'
 gem 'record_tag_helper', '~> 1.0'
+gem "font-awesome-rails"
 # gem 'cloudinary'
 # gem 'omniauth-google-oauth2'
 # Use Uglifier as compressor for JavaScript assets

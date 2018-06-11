@@ -16,29 +16,28 @@
         <h6 class="card-title">
           <% if current_user %>
             <%= link_to like_blog_path(blog), method: :put ,remote: true do %>
-              <%= current_user.voted_as_when_voted_for(blog) == true ? "unlike" : "like" %>
+              <%= current_user.voted_as_when_voted_for(blog) == true ? fa_icon("heart") : fa_icon("heart-o")%>
             <% end %>
           <% else %>
-              <i class="fas fa-heart"></i>
+            <%= fa_icon("heart")  %>
           <% end %>
           <br>
         <%= blog.votes_for.size %> likes
       </h6>
-        <p class="card-text">
+        <div class="card-text">
           <%= blog.status %>
           <br>
+          <%= render partial: blog.comments %>
           <span class="date"><%= blog.created_at.strftime("%d %h")%></span>
-        </p>
+        </div>
         <div class="comment-home">
           <%= form_for([blog,Comment.new]) do |f| %>
-            <%= f.text_area :body, placeholder: "Add a comment"%>
+            <%= f.text_field :body, placeholder: "Add a comment..."%>
             <!-- <br> -->
             <!-- <%= f.submit "Add comment" %> -->
           <% end %>
         </div>
-            <!-- comments must be moved to post page -->
-            <!-- <h2>Comments</h2>
-            <%= render partial: blog.comments %> -->
+            <!-- comments must be added here -->
       </div>
     </div>
 
