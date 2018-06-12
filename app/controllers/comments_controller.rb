@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     @comment = @blog.comments.new(comment_params)
     @comment.user_id = current_user.id
     @comment.save
-    redirect_to root_path
+    redirect_to root_path(anchor: @blog.id)
   end
 
   private

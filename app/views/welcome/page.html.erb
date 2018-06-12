@@ -28,16 +28,21 @@
           <%= blog.status %>
           <br>
           <%= render partial: blog.comments %>
+          <!-- <% blog.comments.each do |comment| %>
+            <p>
+              <strong><%= comment.user.profile.name %></strong>
+              <%= comment.body %>
+            </p>
+          <% end %> -->
           <span class="date"><%= blog.created_at.strftime("%d %h")%></span>
         </div>
         <div class="comment-home">
-          <%= form_for([blog,Comment.new]) do |f| %>
+          <%= form_for([blog,Comment.new], remote: true) do |f| %>
             <%= f.text_field :body, placeholder: "Add a comment..."%>
             <!-- <br> -->
             <!-- <%= f.submit "Add comment" %> -->
           <% end %>
         </div>
-            <!-- comments must be added here -->
       </div>
     </div>
 
