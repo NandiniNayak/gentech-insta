@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   root 'welcome#page'
   # create a nested routes for attachements in the blogs
   resources :blogs do
@@ -8,10 +7,12 @@ Rails.application.routes.draw do
     member do
       put 'like', to:"blogs#vote"
     end
+    resources :comments , only: [:create]
   end
   # resources :attachments
   resources :posts
   resources :profiles
+  resources :followings
   # for omniauth : you get the error: The action 'facebook' could not be found for Devise::OmniauthCallbacksController when you sign up with facebook, to solev this create a call back function for users
 
 

@@ -2,7 +2,7 @@
 
 <h1>Blogs</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Status</th>
@@ -15,7 +15,7 @@
     <% @blogs.each do |blog| %>
       <tr>
         <td><%= blog.status %></td>
-        <td><%= blog.profile %></td>
+        <td><%= blog.profile.name %></td>
         <td><%= link_to 'Show', blog %></td>
         <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
         <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,25 +1,111 @@
-@import "bootstrap-sprockets";
+// @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+@import "font-awesome";
 
-.fa-camera-retro{
-  font-size: 1.7em;
+body{
+  background-color: #fafafa;
+}
+.bg-light {
+    background-color: white !important;
+    border-bottom: solid 1px lightgrey;
 }
 
-.navbar-default {
+.navbar {
+    padding: 0.9rem 23rem;
+}
+.navbar-light .navbar-brand {
+    color: #4e5560;
+}
+.form-inline {
+  width: 100%;
+  padding-left: 30%;
+}
+.insta-title{
+  font-family: 'Lobster';
+  font-size: 2em;
+  font-weight: lighter;
+  color: #4e5560;
+}
+.fa-camera {
+    min-width: 27%;
+}
+.fa-ellipsis-v{
+  min-width: 20%;
+}
+.nav-item{
+  min-width: 60%;
+  font-size: 1.3em;
+}
+.container{
+  margin-top: 5rem;
+}
+.posts-home{
+  // margin-left: %;
+  max-width: 58%;
+}
+.card{
+  min-width: 100%;
+  height: 100%;
+  margin: 5rem;
+}
+.profile-post{
+  display: flex;
+}
+.profile-post-pic{
+  max-width: 50px;
+  max-height: 50px;
+  border-radius: 50%;
+  margin-left: 1.2rem;
+  margin-top: 1.2rem;
+  margin-bottom: 1.1rem;
+}
+.profile-post-content{
+  margin-left: 1.2rem;
+  margin-top: 1.2rem;
+  min-width: 80%;
+  min-height: 80%;
+}
+.post-pic{
+  width:100%;
+  height:100%;
+}
+.card-body{
+  padding: 0rem;
+}
+.card-title {
+  margin: 1.1rem;
+}
+.card-text{
+  margin: 1.1rem;
+  border-bottom: solid 1px #adb3bc;
+}
+.date{
+  color:  #adb3bc;
+}
+// .comment-home{
+//   width: 100%;
+//   margin-left: 1.2rem;
+// }
+#comment_body {
+    -webkit-appearance: textarea;
     background-color: white;
-    border-color: #e7e7e7;
+    -webkit-rtl-ordering: logical;
+    flex-direction: row;
+    resize: auto;
+    cursor: text;
+    border-style: none;
+    padding-left: 1.3rem;
+    padding-bottom: 2rem;
+    min-width: 100%;
+    border-color: none;
 }
-
-.container-fluid {
-    margin-right: auto;
-    margin-left: auto;
-    padding-left: 120px;
-    padding-right: 120px;
+#comment_body:root{
+  border: none;
+  border-style: none;
+  border-color: white;
 }
-
-.navbar-form .form-group {
-    display: inline-block;
-    margin-bottom: 0;
-    vertical-align: middle;
-    padding-left: 120px;
-}
+.fa, .far, .fas {
+    font-family: Font Awesome\ 5 Free;
+    font-size: 1.1em;
+} 
