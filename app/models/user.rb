@@ -1,4 +1,9 @@
 class User < ApplicationRecord
+has_many :followings
+has_many :followees, through: :followings
+
+has_many :reverse_followings, class_name: 'Following',foreign_key: 'follower_id'
+has_many :followers, through: :reverse_followings
   acts_as_voter
   has_one :profile
   has_many :comments

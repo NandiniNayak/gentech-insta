@@ -50,3 +50,41 @@
     </div>
  <% end %>
 </div>
+
+<h1>Listing all the Users</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>profile name</th>
+      <th>follow link</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= link_to 'follow', followings_path(:elephant => user), method: :post%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+<h1>users followed by <%= current_user.email %></h1>
+<ul>
+  <% current_user.followees.each do |followee|  %>
+  <li><%=followee.email %></li>
+  <% end %>
+</ul>
+
+<h1>users following<%= current_user.email %></h1>
+<ul>
+  <% current_user.followers.each do |follower|  %>
+  <li><%=follower.email %></li>
+  <% end %>
+</ul>
