@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'working/page'
+  get 'follow/page'
   root 'welcome#page'
   # create a nested routes for attachements in the blogs
   resources :blogs do
