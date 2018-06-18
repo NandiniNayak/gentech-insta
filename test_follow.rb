@@ -9,24 +9,13 @@
          <!-- only the users who are not a current user  -->
            <%= image_tag(user.profile.picture_url, class: "profile-follow-pic") %>
            <span class="follow-profile-name"><%= user.profile.name %></span>
-           <br>
            <!-- if user.followings is an empty array, provide a link to follow -->
-           <% if current_user.followings == Array.new %>
+           <!-- check if the user is already been followed by current user, by parsings throught he array of users followers -->
+            <% if user.followers.include?(current_user) %>
+               <a href="#" class="btn btn-danger follow"> following </a>
+            <% else %>
              <%= link_to 'follow', followings_path(:follower_id => user), method: :post, class: "btn btn-primary follow"%>
-           <% else %>
-              <!-- loop through user followings -->
-              <!-- problem, for each of the following of the user, it would list out a link follow or unfollow -->
-              solution link is needed only if the
-             <% current_user.followings.each do |following| %>
-                <!-- check if current user is already following a profile , give a link to unfollow-->
-                <% if user == following.followee %>
-                  <%= link_to 'unfollow', following, method: :delete, class: "btn btn-danger follow" %>
-                <% else %>
-                  <%= link_to 'follow', followings_path(:follower_id => user), method: :post, class: "btn btn-primary follow"%>
-                <% end %>
-             <% end %>
-          <% end %>
-
+            <% end %>
        </div>
     </div>
     <% end %>
@@ -51,11 +40,3 @@
     <% end %>
   </ul>
 <% end %>
-
-<!-- loop thorugh all users
-if current_user.followings
-  current_user.followings.each do |following|
-    if user == following.followee
-      link to unfollow
-    else
-      link to follow -->
