@@ -12,7 +12,8 @@
            <!-- if user.followings is an empty array, provide a link to follow -->
            <!-- check if the user is already been followed by current user, by parsings throught he array of users followers -->
             <% if user.followers.include?(current_user) %>
-               <a href="#" class="btn btn-danger follow"> Requested </a>
+               <!-- instead of following_id, pass user as a follower id to the destroy method -->
+               <%= link_to 'unfollow', following_path(user), method: :delete, class: "btn btn-danger follow" %></li>
             <% else %>
              <%= link_to 'follow', followings_path(:follower_id => user), method: :post, class: "btn btn-primary follow"%>
             <% end %>
