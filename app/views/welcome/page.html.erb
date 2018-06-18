@@ -1,90 +1,57 @@
-<div class="posts-home">
-  <% @blogs.each do |blog| %>
-    <div id="<%= blog.id%>">
-      <!-- after hitting a like return to this point -->
-      <div class="card">
-        <div class="profile-post">
-              <%= image_tag(blog.profile.picture_url, class: "profile-post-pic") %>
-          <div class="profile-post-content">
-              <%= blog.profile.name %>
+<!-- once user logs in, if he doesnot have a profile created, direct to create a profile page,else show the blogs -->
+<% if current_user.profile %>
+    <div class="posts-home">
+      <% @blogs.each do |blog| %>
+        <div id="<%= blog.id%>">
+          <!-- after hitting a like return to this point -->
+          <div class="card">
+            <div class="profile-post">
+                  <%= image_tag(blog.profile.picture_url, class: "profile-post-pic") %>
+              <div class="profile-post-content">
+                  <%= blog.profile.name %>
+                  <br>
+                  <%= blog.profile.location %>
+              </div>
+            </div>
+          <div class="card-body">
+            <%= image_tag(blog.attachments.first.image_url, class:"post-pic") %>
+            <h6 class="card-title">
+              <% if current_user %>
+                <%= link_to like_blog_path(blog), method: :put ,remote: true do %>
+                  <%= current_user.voted_as_when_voted_for(blog) == true ? fa_icon("heart") : fa_icon("heart-o")%>
+                <% end %>
+              <% else %>
+                <%= fa_icon("heart")  %>
+              <% end %>
               <br>
-              <%= blog.profile.location %>
+            <%= blog.votes_for.size %> likes
+          </h6>
+            <div class="card-text">
+              <%= blog.status %>
+              <br>
+              <%= render partial: blog.comments %>
+              <!-- <% blog.comments.each do |comment| %>
+                <p>
+                  <strong><%= comment.user.profile.name %></strong>
+                  <%= comment.body %>
+                </p>
+              <% end %> -->
+              <span class="date"><%= blog.created_at.strftime("%d %h")%></span>
+            </div>
+            <div class="comment-home">
+              <%= form_for([blog,Comment.new], remote: true) do |f| %>
+                <%= f.text_field :body, placeholder: "Add a comment..."%>
+                <!-- <br> -->
+                <!-- <%= f.submit "Add comment" %> -->
+              <% end %>
+            </div>
           </div>
         </div>
-      <div class="card-body">
-        <%= image_tag(blog.attachments.first.image_url, class:"post-pic") %>
-        <h6 class="card-title">
-          <% if current_user %>
-            <%= link_to like_blog_path(blog), method: :put ,remote: true do %>
-              <%= current_user.voted_as_when_voted_for(blog) == true ? fa_icon("heart") : fa_icon("heart-o")%>
-            <% end %>
-          <% else %>
-            <%= fa_icon("heart")  %>
-          <% end %>
-          <br>
-        <%= blog.votes_for.size %> likes
-      </h6>
-        <div class="card-text">
-          <%= blog.status %>
-          <br>
-          <%= render partial: blog.comments %>
-          <!-- <% blog.comments.each do |comment| %>
-            <p>
-              <strong><%= comment.user.profile.name %></strong>
-              <%= comment.body %>
-            </p>
-          <% end %> -->
-          <span class="date"><%= blog.created_at.strftime("%d %h")%></span>
-        </div>
-        <div class="comment-home">
-          <%= form_for([blog,Comment.new], remote: true) do |f| %>
-            <%= f.text_field :body, placeholder: "Add a comment..."%>
-            <!-- <br> -->
-            <!-- <%= f.submit "Add comment" %> -->
-          <% end %>
-        </div>
       </div>
+     <% end %>
     </div>
-
-
-    </div>
- <% end %>
-</div>
-
-<h1>Listing all the Users</h1>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>profile name</th>
-      <th>follow link</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.email %></td>
-        <td><%= link_to 'follow', followings_path(:elephant => user), method: :post%></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
-
-
-<h1>users followed by <%= current_user.email %></h1>
-<ul>
-  <% current_user.followees.each do |followee|  %>
-  <li><%=followee.email %></li>
-  <% end %>
-</ul>
-
-<h1>users following<%= current_user.email %></h1>
-<ul>
-  <% current_user.followers.each do |follower|  %>
-  <li><%=follower.email %></li>
-  <% end %>
-</ul>
+<% else %>
+  <!-- <%= link_to 'create profile', new_profile_path, class: "btn btn-primary" %> -->
+  <!-- instead of providing a button to create a profiel, render the new profile form for better user experience -->
+  <%= render 'profiles/form', profile: @profile %>
+<% end %>
