@@ -1,4 +1,12 @@
 class User < ApplicationRecord
+
+# each user could be a seller
+# buyer is actually a user : buyer can buy many products from a various sellers
+has_many :products
+has_many :sellers, through: :products
+
+has_and_belongs_to_many :sellers
+
 has_many :followings
 has_many :followees, through: :followings
 

@@ -1,0 +1,17 @@
+<div class="row">
+  <% @products.each do |product| %>
+    <div class="col-md-4">
+       <div class="card">
+           <%= image_tag(product.picture_url, class: "product-pic") %>
+           <span class="follow-profile-name"><%=product.name %></span>
+           <!-- when user clicks on the link to buy, update the product table with the buyer_id  -->
+           <!-- hence link to product table update method , this solution was set when the association was made via has through link, which does not work as the buyer id cannot be updated when the product is become created hence solution 2 is implemented -->
+           <!-- solution 2: join table buyer_sellers will be updated with the buyer info when buyer wants to buy the product and since the product is linked to the seller, seller id can be found throught the product id-->
+           <%= link_to 'Buy',buyer_sellers_path(:product_id => product.id), method: :post, class: "btn btn-success follow" %>
+       </div>
+    </div>
+    <% end %>
+  <br><br>
+</div>
+<br><br><br>
+<%= link_to 'Add More Products', new_product_path(:seller_id => current_user), class: "btn btn-success" %>
