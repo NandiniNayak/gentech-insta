@@ -1,6 +1,17 @@
 Rails.application.routes.draw do
 
+  post '/tests', to: "tests#create"
+  get 'test/page'
+  resources :buyer_sellers
+  get 'payment/page'
+  post 'payment', to: "payment#create"
+  get 'buyer/page'
+  resources :products
+  resources :sellers
+
+
   get 'follow/page'
+
   root 'welcome#page'
   # create a nested routes for attachements in the blogs
   resources :blogs do

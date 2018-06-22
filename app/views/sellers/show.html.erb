@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<!-- in the seller show page, ask the seller to add their product and pass the seller info -->
+<br><br><br><br>
+<%= link_to 'Add Product', new_product_path(:seller_id => @seller), class: "btn btn-info" %>
+<!-- <p>
+  <strong>User:</strong>
+  <%= @seller.user %>
+</p>
+
+<%= link_to 'Edit', edit_seller_path(@seller) %> |
+<%= link_to 'Back', sellers_path %> -->
