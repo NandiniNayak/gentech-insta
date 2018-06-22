@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   post '/tests', to: "tests#create"
   get 'test/page'
   resources :buyer_sellers
@@ -7,6 +8,10 @@ Rails.application.routes.draw do
   get 'buyer/page'
   resources :products
   resources :sellers
+
+
+  get 'follow/page'
+
   root 'welcome#page'
   # create a nested routes for attachements in the blogs
   resources :blogs do

@@ -17,10 +17,14 @@
 
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item">
-        <a class="nav-link" href="#"><i class="far fa-compass"></i></a>
+        <a class="nav-link" href="/follow/page"><i class="far fa-compass"></i></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/profiles"><i class="far fa-heart"></i></a>
+        <% if user_signed_in? %>
+          <%= link_to '', profile_path(current_user), class: "nav-link far fa-heart" %>
+        <% else %>
+          <a class="nav-link" href="/"><i class="far fa-heart"></i></a>
+        <% end %>
       </li>
       <li class="nav-item">
         <!-- <a class="nav-link" href="#"><i class="far fa-user"></i></a> -->
