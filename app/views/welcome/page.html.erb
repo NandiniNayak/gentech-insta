@@ -57,8 +57,7 @@
      <% end %>
     </div>
     </div>
+<% else %>
+    <%= render 'profiles/form', profile: @profile %>
  <% end %>
 </div>
-<% else %>
-  <%= render 'form', profile: @profile %>
-<% end %>
