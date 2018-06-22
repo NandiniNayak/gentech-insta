@@ -56,8 +56,9 @@
       </div>
      <% end %>
     </div>
-
     </div>
  <% end %>
 </div>
-
+<% else %>
+  <%= render 'form', profile: @profile %>
+<% end %>
