@@ -1,14 +1,13 @@
-1. create a join table, which contains buyer_id and seller_id
-2. rails g scaffold buyer_sellers user:references seller:references
-    note: here user is a buyer
-3. The join table is updated each time a buyer wants to buy a product. sold by a particular seller
+Instagram clone built using Ruby on Rails
 
-4. In products index, provide a link to buy the product, which should updated the join table with the buyer_id and find the corresponding product from the database and associate the seller of that product to the join table
+Gems used are :
+Devise - Authentication
+OmniAuth - Facebook and google Authentication
+Cloudinary and carrierwave - to upload pictures/files and store on Cloud
+stripe - for payment
+acts-as-votable - voting the post
+Bootstrap v4 and font-awesome -  for front end designa nd icons
+simple_form - to make forms simple.
 
-5. in the buyer_seller create method, update the join table and redirect_to buyer page to pay through stripe
-
-
-6. when a product is being created only the seller info is needed
-hence product table must be linked only to the seller table
-
-7. when a product is being bought we need the buyer info, but since product is being sold by a particular seller, it is possible to connect the product to the seller when a user buys it
+Market place is also included in the project.
+A buyer, seller, product and a join table is included which is updated when a buyer buys a product from a seller.
