@@ -6,6 +6,8 @@
     <div class="col-md-4">
        <!-- if current user is already following -->
        <div class="card">
+         <!-- if the user has the profile created already only then allow to follow those profiles -->
+         <% if user.profile %>
          <!-- only the users who are not a current user  -->
            <%= image_tag(user.profile.picture_url, class: "profile-follow-pic") %>
            <span class="follow-profile-name"><%= user.profile.name %></span>
@@ -17,6 +19,7 @@
             <% else %>
              <%= link_to 'follow', followings_path(:follower_id => user), method: :post, class: "btn btn-primary follow"%>
             <% end %>
+          <% end %>
        </div>
     </div>
     <% end %>

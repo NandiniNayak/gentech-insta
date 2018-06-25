@@ -5,7 +5,13 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    # if index method is called from the search bar, filter out the products based on title of the product
+    if params[:search]
+      # to keep the controller skinny, define the logic involved in filtering out the product by title as method search in the model product
+      @products = Product.search(params[:search]).order("created_at DESC")
+    else
+      @products = Product.all
+    end
   end
 
   # GET /products/1
