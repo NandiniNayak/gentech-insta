@@ -17,6 +17,7 @@ gem 'simple_form'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'carrierwave'
+gem 'cloudinary'
 gem 'acts_as_votable'
 gem 'record_tag_helper', '~> 1.0'
 gem "font-awesome-rails"
