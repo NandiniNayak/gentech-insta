@@ -1,17 +1,17 @@
 class User < ApplicationRecord
 
-# each user could be a seller
-# buyer is actually a user : buyer can buy many products from a various sellers
-has_many :products
-has_many :sellers, through: :products
+  # each user could be a seller
+  # buyer is actually a user : buyer can buy many products from a various sellers
+  has_many :products
+  has_many :sellers, through: :products
 
-has_and_belongs_to_many :sellers
+  has_and_belongs_to_many :sellers
 
-has_many :followings
-has_many :followees, through: :followings
+  has_many :followings
+  has_many :followees, through: :followings
 
-has_many :reverse_followings, class_name: 'Following',foreign_key: 'follower_id'
-has_many :followers, through: :reverse_followings
+  has_many :reverse_followings, class_name: 'Following',foreign_key: 'follower_id'
+  has_many :followers, through: :reverse_followings
   acts_as_voter
   has_one :profile
   has_many :comments

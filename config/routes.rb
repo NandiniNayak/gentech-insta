@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   post '/tests', to: "tests#create"
-  get 'test/page'
   resources :buyer_sellers
   get 'payment/page'
   post 'payment', to: "payment#create"
@@ -29,7 +28,6 @@ Rails.application.routes.draw do
 
 
 devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  get 'home/page'
 
   # root 'devise/sessions#new'
 

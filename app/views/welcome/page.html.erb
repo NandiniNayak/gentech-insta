@@ -2,6 +2,7 @@
 <!-- on the home page,if profile is alreadt created, ask the user if they want to buy or sell stuff -->
 <!-- Become a buyer, since form has nothing to be filled out directly point to buyer create method to connect the buyer to the user id -->
 <br><br><br>
+<!-- <%= link_to 'Are you a seller?', sellers_path, method: :post, class: "btn btn-primary" %> -->
 <% if current_user.profile %>
   <%= link_to 'Add Blog', new_blog_path, class: "btn btn-primary" %>
 <% end %>
