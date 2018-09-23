@@ -18,7 +18,7 @@
         <%= text_field_tag :search, params[:search],placeholder: "search", class: "form-control mr-sm-2"%>
     <% end %>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <% if current_user.profile %>
+      <% if user_signed_in? && current_user.profile %>
         <li class="nav-item">
           <a class="nav-link" href="/follow/page"><i class="far fa-compass"></i></a>
         </li>
