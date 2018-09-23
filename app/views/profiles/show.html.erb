@@ -27,7 +27,9 @@
 
 <p>
   <strong>
-    <%= image_tag(@profile.picture_url, width: "30%", height:"30%")%>
+    <% if @profile.picture %>
+      <%= image_tag(@profile.picture_url, width: "30%", height:"30%")%>
+    <% end %>
   </strong>
 </p>
 

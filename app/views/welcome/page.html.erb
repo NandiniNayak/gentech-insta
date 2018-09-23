@@ -15,7 +15,9 @@
           <!-- after hitting a like return to this point -->
           <div class="card">
             <div class="profile-post">
+                <% if blog.profile.picture %>
                   <%= image_tag(blog.profile.picture_url, class: "profile-post-pic") %>
+                <% end %>
               <div class="profile-post-content">
                   <%= blog.profile.name %>
                   <br>
@@ -23,7 +25,10 @@
               </div>
             </div>
           <div class="card-body">
-            <%= image_tag(blog.attachments.first.image_url, class:"post-pic") %>
+            <% if !blog.attachments.empty? %>
+               <%= image_tag(blog.attachments.first.image_url, class:"post-pic") %>
+            <% end %>
+
             <h6 class="card-title">
               <% if current_user %>
                 <%= link_to like_blog_path(blog), method: :put ,remote: true do %>

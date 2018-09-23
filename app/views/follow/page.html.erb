@@ -9,7 +9,9 @@
          <!-- if the user has the profile created already only then allow to follow those profiles -->
          <% if user.profile %>
          <!-- only the users who are not a current user  -->
-           <%= image_tag(user.profile.picture_url, class: "profile-follow-pic") %>
+           <% if user.profile.picture %>
+              <%= image_tag(user.profile.picture_url, class: "profile-follow-pic") %>
+           <% end %>
            <span class="follow-profile-name"><%= user.profile.name %></span>
            <!-- if user.followings is an empty array, provide a link to follow -->
            <!-- check if the user is already been followed by current user, by parsings throught he array of users followers -->
